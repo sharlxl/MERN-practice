@@ -14,6 +14,7 @@ mongoose.connection.once("open", () => {
   console.log("connected to mongo");
 });
 
+app.use(express.static("./frontend/dist"));
 // ==Express Sessions== //
 app.set("trust proxy", 1); // trust first proxy
 app.use(
