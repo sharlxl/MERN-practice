@@ -10,3 +10,5 @@
 - Deploy to heroku
 - Create a react project
   - Build local react
+  - setup heroku post build
+  - change backend routes path to /api
