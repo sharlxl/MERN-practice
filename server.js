@@ -14,7 +14,14 @@ mongoose.connection.once("open", () => {
   console.log("connected to mongo");
 });
 
+// ==static to react app==//
 app.use(express.static("./frontend/dist"));
+
+// ==route for heroku to route the reactrouter back to react app== //
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "./frontend/dist", "index.html"));
+});
+
 // ==Express Sessions== //
 app.set("trust proxy", 1); // trust first proxy
 app.use(
@@ -28,10 +35,10 @@ app.use(
 // ==Express Sessions== //
 
 app.use(express.urlencoded({ extended: false }));
-app.use("/users", usersController);
-app.use("/fruits", fruitsController);
+// app.use("/users", usersController);
+// app.use("/fruits", fruitsController);
 
-app.get("/", (req, res) => {
+app.get("/api", (req, res) => {
   console.log("Oh hey! I got a request. Let me respond with something");
   res.send("Hello World!");
 });
