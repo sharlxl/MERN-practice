@@ -1,0 +1,14 @@
+cookies are stored on the client side. 
+
+any request made to a server/browser. the browser will make a cookie with every request you make.
+
+cookies can track every move you make in their website.
+
+===
+
+session is a storage in the server.
+a piece of memory unique to each user.
+
+===
+pnpm add express-session OR 
+npm i express-session

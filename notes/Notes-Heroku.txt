@@ -1,0 +1,27 @@
+1. Sign up for Heroku account
+2. Create a git repo 
+3. Make sure you have a .gitignore and .env 
+4. Git push your code to your repo 
+5. Connect your github with heroku(after creating a new app)
+- enable auto-deployment (main)
+- create new .env variable in config vars (input your MONGO_URI cloud/atlas uri)
+(heroku will give a port so no need)
+
+=== HEROKU SETUP Unit 3 ===
+
+Project directory 
+====
+(folder) express
+-> server.js
+-> package.json
+-> (folder) React app
+====
+
+1. Heroku will build the express app automatically.
+2. instruct Heroku to build a react app. 
+> npm task
+// > cd <React-app>
+// > npm install
+// > npm run build
+
+3. ensure that server.js connects to the static build in (folder) React app.

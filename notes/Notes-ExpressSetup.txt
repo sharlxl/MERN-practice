@@ -1,0 +1,26 @@
+1. npm init -y 
+// with or without -y to init package.json
+
+2. pnpm add express dotenv 
+// or npm i express dotenv
+
+3. set up your server.js or index.js file.
+
+===========================================
+const express = require("express");
+const app = express();
+
+app.get("/", (req, res) => {
+  console.log("Oh hey! I got a request. Let me respond with something");
+  res.send("Hello World!");
+});
+
+app.listen(3000, () => {
+  console.log("I am listening for requests!!!");
+});
+===========================================
+
+4. npm install nodemon -g
+CLI> nodemon server.js
+
+5. create .gitignore file

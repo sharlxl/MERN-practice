@@ -118,6 +118,4 @@ yarn-debug.log*
 
 .idea/
 .vscode/
-
-
-/notes
+*.md
