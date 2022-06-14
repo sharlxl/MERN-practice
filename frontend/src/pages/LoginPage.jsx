@@ -35,29 +35,47 @@ const LoginPage = () => {
 
   return (
     <>
-      <h1 className="text-xl">MERN Holidays!</h1>
-      <form onSubmit={onSumbitLogin}>
-        <fieldset>
-          <legend>Login</legend>
-          <label htmlFor="username">Username</label>
+      <h1
+        className="text-6xl text-center bg-stone-800 p-20 text-amber-300 mb-10
+      "
+      >
+        MERN Holidays!
+      </h1>
+      <form className="flex justify-center" onSubmit={onSumbitLogin}>
+        <fieldset className="border-2 border-stone-600 p-5 flex flex-col w-1/2">
+          <legend className="text-stone-800">Login</legend>
+          <label className="text-stone-800" htmlFor="username">
+            Username
+          </label>
           <input
             id="username"
             name="username"
             type="text"
             placeholder="Enter here"
+            className=" focus:outline-stone-500 focus:bg-stone-600 focus:text-amber-300 m-2 bg-stone-200"
           />
-          <label htmlFor="password">Password</label>
+          <label className="text-stone-800" htmlFor="password">
+            Password
+          </label>
           <input
             id="password"
             name="password"
             type="password"
             placeholder="Enter here"
+            className=" focus:outline-stone-500 focus:bg-stone-600 m-2 focus:text-amber-300 bg-stone-200"
           />
-          <button>Log in</button>
+          <button className="rounded-md border-2 border-stone-600 w-1/2 mx-auto m-1 p-1 text-stone-800 hover:bg-stone-600 hover:text-amber-300">
+            Log in
+          </button>
         </fieldset>
       </form>
 
-      <button onClick={goToHolidays}>Cheat button to holidays</button>
+      <button
+        className="rounded-md border-2 border-stone-600 float-right mr-20 m-2 p-1 text-stone-800 hover:bg-stone-600 hover:text-amber-400"
+        onClick={goToHolidays}
+      >
+        Cheat button to holidays
+      </button>
     </>
   );
 };
