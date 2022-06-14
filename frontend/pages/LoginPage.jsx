@@ -9,7 +9,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <h1>MERN Holidays!</h1>
+      <h1 className="text-xl">MERN Holidays!</h1>
       <form>
         <fieldset>
           <legend>Login</legend>
