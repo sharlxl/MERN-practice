@@ -30,14 +30,16 @@ app.use(
 );
 // ==Express Sessions== //
 
+app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-// app.use("/users", usersController);
 // app.use("/fruits", fruitsController);
 
 app.get("/api", (req, res) => {
   console.log("Oh hey! I got a request. Let me respond with something");
   res.send("Hello World!");
 });
+
+app.use("/api/users", usersController);
 
 // ==route for heroku to route the reactrouter back to react app== //
 app.get("/*", (req, res) => {

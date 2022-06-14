@@ -7,10 +7,36 @@ const LoginPage = () => {
     navigate("/holidays");
   };
 
+  const onSumbitLogin = (e) => {
+    e.preventDefault();
+    const loginData = {
+      username: e.target.elements.username.value,
+      password: e.target.elements.password.value,
+    };
+    // console.log(JSON.stringify(loginData));
+
+    fetch("/api/users/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loginData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        if (data.status === "sucessful") {
+          navigate("/holidays");
+        } else {
+          alert("log in unsucessful");
+        }
+      });
+  };
+
   return (
     <>
       <h1 className="text-xl">MERN Holidays!</h1>
-      <form>
+      <form onSubmit={onSumbitLogin}>
         <fieldset>
           <legend>Login</legend>
           <label htmlFor="username">Username</label>

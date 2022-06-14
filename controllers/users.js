@@ -15,7 +15,7 @@ router.get("/seedData", async (req, res) => {
     await User.deleteMany({});
     const newUsers = await User.create([
       {
-        name: "shar",
+        username: "shar",
         password: bcrypt.hashSync("123", saltRounds),
       },
     ]);
@@ -26,19 +26,22 @@ router.get("/seedData", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  const { name, password } = req.body;
-  const user = await User.findOne({ name });
+  console.log(req.body);
+  const { username, password } = req.body;
+  const user = await User.findOne({ username });
   if (user === null) {
-    res.send("Login fail");
+    res.json("Login fail");
   } else {
     if (bcrypt.compareSync(password, user.password)) {
       req.session.user = user;
       // console.log("session", req.session)
-      res.send(user);
+      // res.json(user);
+      res.json({ status: "sucessful", ...user });
     } else {
-      res.send("Password fail");
+      res.json("Password fail");
     }
   }
+  // res.send({ login: "ok" });
 });
 
 // ==Express Sessions== //

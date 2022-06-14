@@ -10,6 +10,9 @@ const NavBar = () => {
       <li className="border-2">
         <NavLink to="/holidays">Holidays</NavLink>
       </li>
+      <li className="border-2">
+        <NavLink to="/holidays/1">details</NavLink>
+      </li>
     </ul>
   );
 };
