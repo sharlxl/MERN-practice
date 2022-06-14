@@ -1,5 +1,3 @@
-import logo from "./logo.svg";
-import "./App.css";
 import LoginPage from "../pages/LoginPage";
 import HolidaysPage from "../pages/HolidaysPage";
 import HolidaysDetailsPage from "../pages/HolidaysDetailsPage";
