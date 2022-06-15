@@ -4,7 +4,7 @@ const express = require("express");
 const session = require("express-session");
 const app = express();
 const usersController = require("./controllers/users");
-const fruitsController = require("./controllers/fruits");
+const holidaysController = require("./controllers/holidays");
 const path = require("path");
 
 const PORT = process.env.PORT || 5001;
@@ -40,6 +40,7 @@ app.get("/api", (req, res) => {
 });
 
 app.use("/api/users", usersController);
+app.use("/api/holidays", holidaysController);
 
 // ==route for heroku to route the reactrouter back to react app== //
 app.get("/*", (req, res) => {
