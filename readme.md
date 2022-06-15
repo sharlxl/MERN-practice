@@ -17,8 +17,8 @@
 
 CRUD holidays
 
-Login Page - /login
-Master Page - /holidays
+Login Page - /login  
+Master Page - /holidays  
 Detail Page - /holidays/:id
 
 ## Mongoose Schema
@@ -31,9 +31,9 @@ Detail Page - /holidays/:id
 
 ## CRUD
 
-Create - /holidays/new - POST - /api/holidays/new
-Read - /holidays - GET - /api/holidays/all
-Read (secret) - /holidays/:id - GET - /api/holidays/:id
+Create - /holidays/new - POST - /api/holidays/new  
+Read - /holidays - GET - /api/holidays/all  
+Read (secret) - /holidays/:id - GET - /api/holidays/:id  
 Delete - DELETE - /api/holidays/:id
 
 ## Security
