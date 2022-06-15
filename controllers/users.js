@@ -1,6 +1,7 @@
 const express = require("express");
 const User = require("../models/Users");
 const bcrypt = require("bcrypt");
+const { StatusCodes } = require("http-status-codes");
 
 const router = express.Router();
 const saltRounds = 10;
@@ -26,22 +27,24 @@ router.get("/seedData", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-  console.log(req.body);
   const { username, password } = req.body;
   const user = await User.findOne({ username });
   if (user === null) {
-    res.json("Login fail");
+    res
+      .status(StatusCodes.NOT_FOUND)
+      .json({ status: "fail", data: "User not found" });
   } else {
     if (bcrypt.compareSync(password, user.password)) {
       req.session.user = user;
       // console.log("session", req.session)
       // res.json(user);
-      res.json({ status: "sucessful", ...user });
+      res.status(StatusCodes.OK).json({ status: "sucessful", ...user });
     } else {
-      res.json("Password fail");
+      res
+        .status(StatusCodes.UNAUTHORIZED)
+        .json({ status: "fail", data: "Password fail" });
     }
   }
-  // res.send({ login: "ok" });
 });
 
 // ==Express Sessions== //
