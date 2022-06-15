@@ -2,6 +2,10 @@ import LoginPage from "./pages/LoginPage";
 import HolidaysPage from "./pages/HolidaysPage";
 import HolidaysDetailsPage from "./pages/HolidaysDetailsPage";
 import { Routes, BrowserRouter, Route, Navigate } from "react-router-dom";
+import { atom } from "jotai";
+import { atomWithStorage } from "jotai/utils";
+
+export const userAtom = atom({});
 
 function App() {
   return (

@@ -1,7 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { userAtom } from "../App";
+import { useAtom } from "jotai";
 
 const LoginPage = () => {
+  // ==jotai== //
+  const [user, setUser] = useAtom(userAtom);
+  //abit like usecontext
+
   const navigate = useNavigate();
   const goToHolidays = () => {
     navigate("/holidays");
@@ -24,8 +30,9 @@ const LoginPage = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data._doc);
         if (data.status === "sucessful") {
+          setUser(data._doc);
           navigate("/holidays");
         } else {
           alert("log in unsucessful");
