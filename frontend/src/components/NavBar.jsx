@@ -5,7 +5,10 @@ import { userAtom } from "../App";
 
 const NavBar = () => {
   const [user, setUser] = useAtom(userAtom);
-  console.log(user);
+  // console.log(user);
+
+  const onClickLogout = () => {};
+
   return (
     <ul className="flex">
       <li className="border-2">
@@ -18,6 +21,7 @@ const NavBar = () => {
         <NavLink to="/holidays/1">details</NavLink>
       </li>
       <li>Hi! {user.username}</li>
+      <li className="border-2">Logout</li>
     </ul>
   );
 };
