@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-const CreateHolidayForm = () => {
+const CreateHolidayForm = ({ setLastIdOfHolidayList }) => {
   const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
 
   const onClickSubmitNewHoliday = () => {
     console.log("click", name);
@@ -13,7 +14,10 @@ const CreateHolidayForm = () => {
       body: JSON.stringify({ name }),
     })
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => {
+        setLastIdOfHolidayList(data.data._id);
+        setName("");
+      });
   };
 
   return (
@@ -27,9 +31,19 @@ const CreateHolidayForm = () => {
         name="holiday"
         type="text"
         placeholder="New Holiday!"
-        maxLength={10}
+        maxLength={20}
         className="p-1 rounded-md border-2 border-stone-800 focus:outline-stone-500 focus:bg-stone-600 focus:text-amber-300 m-2 bg-stone-200"
         onChange={(event) => setName(event.target.value)}
+      />
+      <input
+        id="description"
+        name="description"
+        type="textarea"
+        placeholder="Was it awesome??"
+        rows="4"
+        cols="50"
+        className="p-1 rounded-md border-2 border-stone-800 focus:outline-stone-500 focus:bg-stone-600 focus:text-amber-300 m-2 bg-stone-200"
+        onChange={(event) => setDescription(event.target.value)}
       />
       <button
         disabled={name.length === 0}
