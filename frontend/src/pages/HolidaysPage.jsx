@@ -6,11 +6,14 @@ import NavBar from "../components/NavBar";
 
 const HolidaysPage = () => {
   const [holidaysList, setHolidaysList] = useState([]);
+  const [lastIdOfHolidayList, setLastIdOfHolidayList] = useState("");
   useEffect(() => {
     fetch(`/api/holidays/all`)
       .then((response) => response.json())
-      .then((data) => setHolidaysList(data));
-  }, []);
+      .then((data) => {
+        setHolidaysList(data.data);
+      });
+  }, [lastIdOfHolidayList]);
 
   if (holidaysList.status === "fail") {
     return holidaysList.data;
@@ -22,7 +25,7 @@ const HolidaysPage = () => {
       <section>
         <h1 className="text-2xl">Holidays</h1>
         <div className="flex justify-center">
-          <CreateHolidayForm />
+          <CreateHolidayForm setLastIdOfHolidayList={setLastIdOfHolidayList} />
         </div>
       </section>
       <section className="flex gap-4">
@@ -35,7 +38,14 @@ const HolidaysPage = () => {
           </thead>
           <tbody>
             {holidaysList.map((holiday) => {
-              return <HolidaysListCard key={holiday._id} {...holiday} />;
+              return (
+                <HolidaysListCard
+                  key={holiday._id}
+                  holidaysList={holidaysList}
+                  setHolidaysList={setHolidaysList}
+                  {...holiday}
+                />
+              );
             })}
           </tbody>
         </table>
