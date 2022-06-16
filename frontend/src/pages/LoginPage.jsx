@@ -32,7 +32,7 @@ const LoginPage = () => {
       .then((data) => {
         // console.log(data._doc);
         if (data.status === "sucessful") {
-          setUser(data._doc);
+          setUser(data.data);
           navigate("/holidays");
         } else {
           alert("log in unsucessful");

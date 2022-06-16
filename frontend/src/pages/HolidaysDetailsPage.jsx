@@ -8,8 +8,8 @@ const HolidaysDetailsPage = () => {
   useEffect(() => {
     fetch(`/api/holidays/${id}`)
       .then((response) => response.json())
-      .then((data) => setHoliday(data));
-  }, []);
+      .then((data) => setHoliday(data.data));
+  }, [id]);
   if (holiday.status === "fail") {
     return "No Holiday here";
   }

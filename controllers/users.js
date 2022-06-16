@@ -38,7 +38,7 @@ router.post("/login", async (req, res) => {
       req.session.user = user;
       // console.log("session", req.session)
       // res.json(user);
-      res.status(StatusCodes.OK).json({ status: "sucessful", ...user });
+      res.status(StatusCodes.OK).json({ status: "sucessful", data: user });
     } else {
       res
         .status(StatusCodes.UNAUTHORIZED)
